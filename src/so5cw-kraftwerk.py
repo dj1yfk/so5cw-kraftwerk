@@ -92,7 +92,7 @@ try:
                     current = 0
 
                 if current > limits[ch]:    # Fuse blows!
-                    syslog.syslog("ALERT: Switched off channel {} (limit: {}, measured: {})".format(ch, limits[ch], current))
+                    syslog.syslog("ALERT: Switched off channel {} (limit: {}, measured: {}, voltage: {})".format(ch, limits[ch], current, voltage))
                     lstate[ch] = 1
                     rstate[ch] = 0
                     GPIO.output(rpins[ch], rstate[ch])
