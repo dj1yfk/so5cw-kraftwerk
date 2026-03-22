@@ -24,6 +24,29 @@ def sign_of_life():
     for i in range(0,5):
         GPIO.output(lpins[i], lstate[i])
 
+def read_voltage(ch):
+    vbusreg = bus.read_i2c_block_data(0x40 + ch, 2, 2)
+    vbusreg = ((vbusreg[0] << 8) + vbusreg[1])
+    ovf = vbusreg & 0x0001
+    voltage = (vbusreg >> 3) * 0.004
+    return voltage, ovf
+
+def read_current(ch):
+    vshtreg = bus.read_i2c_block_data(0x40 + ch, 1, 2)
+
+    vshtreg = ((vshtreg[0] << 8) + vshtreg[1])
+    sign = vshtreg & 0x8000
+
+    if sign == 0:
+        current = (vshtreg / 100000) / 0.01
+    else:
+        current = ((65535 + 1 - vshtreg) / -100000) / 0.01
+
+    if current < 0 and current > -0.01:  # no stinking "-0.00" please
+        current = 0
+
+    return current
+
 stdscr = curses.initscr()
 curses.noecho()
 curses.curs_set(0)
@@ -73,26 +96,19 @@ try:
 
         with SMBus(1) as bus:
             for ch in range(0,5):
-                vbusreg = bus.read_i2c_block_data(0x40 + ch, 2, 2)
-                vshtreg = bus.read_i2c_block_data(0x40 + ch, 1, 2)
+                voltage, ovf = read_voltage(ch);
+                current      = read_current(ch);
 
-                vbusreg = ((vbusreg[0] << 8) + vbusreg[1])
-                ovf = vbusreg & 0x0001
-                voltage = (vbusreg >> 3) * 0.004
+                if current > limits[ch]:    # Fuse blows?
+                    syslog.syslog("ALERT: Channel {} above limit (limit: {}, measured: {}, voltage: {}) - re-reading current.".format(ch, limits[ch], current, voltage))
+                    current      = read_current(ch);
 
-                vshtreg = ((vshtreg[0] << 8) + vshtreg[1])
-                sign = vshtreg & 0x8000
+                    if current < limits[ch]:    # false alert
+                        syslog.syslog("OK - 2nd reading: {}".format(current))
+                        continue
+                    else:
+                        syslog.syslog("CFM - 2nd reading: {} - Switch OFF".format(current))
 
-                if sign == 0:
-                    current = (vshtreg / 100000) / 0.01
-                else:
-                    current = ((65535 + 1 - vshtreg) / -100000) / 0.01
-
-                if current < 0 and current > -0.01:  # no stinking "-0.00" please
-                    current = 0
-
-                if current > limits[ch]:    # Fuse blows!
-                    syslog.syslog("ALERT: Switched off channel {} (limit: {}, measured: {}, voltage: {})".format(ch, limits[ch], current, voltage))
                     lstate[ch] = 1
                     rstate[ch] = 0
                     GPIO.output(rpins[ch], rstate[ch])
