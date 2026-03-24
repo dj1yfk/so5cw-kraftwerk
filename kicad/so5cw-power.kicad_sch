@@ -4113,17 +4113,6 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "Note: GPIO1 cannot be used\nas planned here (special function).\nRewire to GPIO19!"
-		(exclude_from_sim no)
-		(at 281.686 208.534 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "00fad7e2-530b-4e4e-b45e-8f90245ebb4b")
-	)
 	(text "13.8V DC\nOutput 2\n(Band Dec.)"
 		(exclude_from_sim no)
 		(at 122.174 27.94 0)
@@ -6359,6 +6348,16 @@
 	)
 	(wire
 		(pts
+			(xy 228.6 224.79) (xy 233.68 224.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8a545112-487c-411f-a8d1-0e8dcf7b4c92")
+	)
+	(wire
+		(pts
 			(xy 346.71 58.42) (xy 344.17 58.42)
 		)
 		(stroke
@@ -7727,6 +7726,16 @@
 		)
 		(uuid "752e0246-0c70-4720-94e5-1304464f6075")
 	)
+	(label "K2G"
+		(at 228.6 224.79 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "75574e12-f1b1-431e-a563-15e9509b7444")
+	)
 	(label "ALERT2"
 		(at 363.22 109.22 0)
 		(effects
@@ -7866,16 +7875,6 @@
 			(justify left bottom)
 		)
 		(uuid "9ed4b541-71de-4b18-afd2-30b356c7fec4")
-	)
-	(label "K2G"
-		(at 275.59 209.55 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a0999cdc-05e4-42a4-ad31-5b36a31dde73")
 	)
 	(label "K5G"
 		(at 328.93 209.55 0)
