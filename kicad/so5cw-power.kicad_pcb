@@ -30956,6 +30956,133 @@
 		(layer "Edge.Cuts")
 		(uuid "4ef03f9b-aad4-4f2a-894e-efd2473e5e70")
 	)
+	(gr_text "SCL"
+		(at 113.42 79.29 0)
+		(layer "F.SilkS")
+		(uuid "79f8e678-ac0f-4a94-b313-9afe684bee9b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "SDA"
+		(at 113.52 73.22 0)
+		(layer "F.SilkS")
+		(uuid "cc597504-c174-437d-a4fa-d50c3455ec22")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "DC IN"
+		(at 180.17 139.31 0)
+		(layer "F.SilkS")
+		(uuid "a8ff770f-7c26-462c-9c95-7997c83d7ea8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "IN1"
+		(at 78.16 40.08 0)
+		(layer "F.SilkS")
+		(uuid "3e888a77-cd77-4ee8-960f-f1e0e9831d7e")
+		(effects
+			(font
+				(size 1.1 1.1)
+				(thickness 0.24)
+				(bold yes)
+			)
+			(justify bottom)
+		)
+	)
+	(gr_text "IN2"
+		(at 91.57 40.08 0)
+		(layer "F.SilkS")
+		(uuid "b8636d66-ca7b-4b52-a601-7e1abd616377")
+		(effects
+			(font
+				(size 1.1 1.1)
+				(thickness 0.24)
+				(bold yes)
+			)
+			(justify bottom)
+		)
+	)
+	(gr_text "Protection active"
+		(at 111.29 47.33 0)
+		(layer "F.SilkS")
+		(uuid "6ea2d28e-c54a-4730-8c59-a288e6022a17")
+		(effects
+			(font
+				(size 1.1 1.1)
+				(thickness 0.24)
+				(bold yes)
+			)
+			(justify bottom)
+		)
+	)
+	(gr_text "+"
+		(at 131.15 41.28 0)
+		(layer "F.SilkS")
+		(uuid "ea5410ec-d77b-4cd2-98e1-8637f6a7bbaf")
+		(effects
+			(font
+				(size 1.1 1.1)
+				(thickness 0.24)
+				(bold yes)
+			)
+			(justify bottom)
+		)
+	)
+	(gr_text "OUT1: 13.8V"
+		(at 136.42 40.08 0)
+		(layer "F.SilkS")
+		(uuid "f716fbd5-1360-43b8-a16c-9d794b227c74")
+		(effects
+			(font
+				(size 1.1 1.1)
+				(thickness 0.24)
+				(bold yes)
+			)
+			(justify bottom)
+		)
+	)
+	(gr_text "-"
+		(at 141.48 41.49 0)
+		(layer "F.SilkS")
+		(uuid "fc8646a6-e709-49b6-8697-f267a1c11975")
+		(effects
+			(font
+				(size 1.1 1.1)
+				(thickness 0.24)
+				(bold yes)
+			)
+			(justify bottom)
+		)
+	)
+	(gr_text "+"
+		(at 147.03 41.4 0)
+		(layer "F.SilkS")
+		(uuid "48e45ce8-51c6-4fce-b203-7009381db027")
+		(effects
+			(font
+				(size 1.1 1.1)
+				(thickness 0.24)
+				(bold yes)
+			)
+			(justify bottom)
+		)
+	)
 	(gr_text "OUT2: 13.8V"
 		(at 152.36 40.29 0)
 		(layer "F.SilkS")
@@ -30983,9 +31110,9 @@
 		)
 	)
 	(gr_text "+"
-		(at 194.66 41.6 0)
+		(at 162.92 41.51 0)
 		(layer "F.SilkS")
-		(uuid "181a333d-c6cc-4ea0-8fad-ce693decd275")
+		(uuid "f9857495-63dc-4815-a6b7-968e6a3dd3c6")
 		(effects
 			(font
 				(size 1.1 1.1)
@@ -30993,146 +31120,6 @@
 				(bold yes)
 			)
 			(justify bottom)
-		)
-	)
-	(gr_text "IN1"
-		(at 78.16 40.08 0)
-		(layer "F.SilkS")
-		(uuid "3e888a77-cd77-4ee8-960f-f1e0e9831d7e")
-		(effects
-			(font
-				(size 1.1 1.1)
-				(thickness 0.24)
-				(bold yes)
-			)
-			(justify bottom)
-		)
-	)
-	(gr_text "+"
-		(at 147.03 41.4 0)
-		(layer "F.SilkS")
-		(uuid "48e45ce8-51c6-4fce-b203-7009381db027")
-		(effects
-			(font
-				(size 1.1 1.1)
-				(thickness 0.24)
-				(bold yes)
-			)
-			(justify bottom)
-		)
-	)
-	(gr_text "-"
-		(at 205.06 41.52 0)
-		(layer "F.SilkS")
-		(uuid "6ba7d0c6-9319-49c9-8ee5-1f3f5e6ccbe5")
-		(effects
-			(font
-				(size 1.1 1.1)
-				(thickness 0.24)
-				(bold yes)
-			)
-			(justify bottom)
-		)
-	)
-	(gr_text "Protection active"
-		(at 111.29 47.33 0)
-		(layer "F.SilkS")
-		(uuid "6ea2d28e-c54a-4730-8c59-a288e6022a17")
-		(effects
-			(font
-				(size 1.1 1.1)
-				(thickness 0.24)
-				(bold yes)
-			)
-			(justify bottom)
-		)
-	)
-	(gr_text "SCL"
-		(at 113.42 79.29 0)
-		(layer "F.SilkS")
-		(uuid "79f8e678-ac0f-4a94-b313-9afe684bee9b")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-			(justify left bottom)
-		)
-	)
-	(gr_text "-"
-		(at 173.33 41.39 0)
-		(layer "F.SilkS")
-		(uuid "9107d082-d3fc-4eee-999d-9bc98c5e89e3")
-		(effects
-			(font
-				(size 1.1 1.1)
-				(thickness 0.24)
-				(bold yes)
-			)
-			(justify bottom)
-		)
-	)
-	(gr_text "E1  E2  E3  E4  E5"
-		(at 111.45 49.77 0)
-		(layer "F.SilkS")
-		(uuid "9f3a6f0b-7a2c-473a-98ea-3553503299e7")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.24)
-				(bold yes)
-			)
-			(justify bottom)
-		)
-	)
-	(gr_text "OUT4: 13.8V"
-		(at 183.78 40.14 0)
-		(layer "F.SilkS")
-		(uuid "a4e13779-469a-480a-8d65-509115636838")
-		(effects
-			(font
-				(size 1.1 1.1)
-				(thickness 0.24)
-				(bold yes)
-			)
-			(justify bottom)
-		)
-	)
-	(gr_text "DC IN"
-		(at 180.17 139.31 0)
-		(layer "F.SilkS")
-		(uuid "a8ff770f-7c26-462c-9c95-7997c83d7ea8")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-			(justify left bottom)
-		)
-	)
-	(gr_text "IN2"
-		(at 91.57 40.08 0)
-		(layer "F.SilkS")
-		(uuid "b8636d66-ca7b-4b52-a601-7e1abd616377")
-		(effects
-			(font
-				(size 1.1 1.1)
-				(thickness 0.24)
-				(bold yes)
-			)
-			(justify bottom)
-		)
-	)
-	(gr_text "SDA"
-		(at 113.52 73.22 0)
-		(layer "F.SilkS")
-		(uuid "cc597504-c174-437d-a4fa-d50c3455ec22")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-			(justify left bottom)
 		)
 	)
 	(gr_text "OUT3: 5V"
@@ -31148,36 +31135,10 @@
 			(justify bottom)
 		)
 	)
-	(gr_text "DJ5CW / SO5CW\nRemote Power Distribution\n2026-01-07 - V1.0"
-		(at 108.81 137.82 0)
+	(gr_text "-"
+		(at 173.33 41.39 0)
 		(layer "F.SilkS")
-		(uuid "e619d9aa-3fb2-4343-a912-20d01cbbff09")
-		(effects
-			(font
-				(size 1.8 1.8)
-				(thickness 0.3)
-				(bold yes)
-			)
-			(justify bottom)
-		)
-	)
-	(gr_text "+"
-		(at 131.15 41.28 0)
-		(layer "F.SilkS")
-		(uuid "ea5410ec-d77b-4cd2-98e1-8637f6a7bbaf")
-		(effects
-			(font
-				(size 1.1 1.1)
-				(thickness 0.24)
-				(bold yes)
-			)
-			(justify bottom)
-		)
-	)
-	(gr_text "OUT5: 13.8V"
-		(at 199.64 40.14 0)
-		(layer "F.SilkS")
-		(uuid "ec3f770b-454c-4983-9b9e-9fe7e2806e3f")
+		(uuid "9107d082-d3fc-4eee-999d-9bc98c5e89e3")
 		(effects
 			(font
 				(size 1.1 1.1)
@@ -31200,23 +31161,10 @@
 			(justify bottom)
 		)
 	)
-	(gr_text "OUT1: 13.8V"
-		(at 136.42 40.08 0)
+	(gr_text "OUT4: 13.8V"
+		(at 183.78 40.14 0)
 		(layer "F.SilkS")
-		(uuid "f716fbd5-1360-43b8-a16c-9d794b227c74")
-		(effects
-			(font
-				(size 1.1 1.1)
-				(thickness 0.24)
-				(bold yes)
-			)
-			(justify bottom)
-		)
-	)
-	(gr_text "+"
-		(at 162.92 41.51 0)
-		(layer "F.SilkS")
-		(uuid "f9857495-63dc-4815-a6b7-968e6a3dd3c6")
+		(uuid "a4e13779-469a-480a-8d65-509115636838")
 		(effects
 			(font
 				(size 1.1 1.1)
@@ -31239,14 +31187,66 @@
 			(justify bottom)
 		)
 	)
-	(gr_text "-"
-		(at 141.48 41.49 0)
+	(gr_text "+"
+		(at 194.66 41.6 0)
 		(layer "F.SilkS")
-		(uuid "fc8646a6-e709-49b6-8697-f267a1c11975")
+		(uuid "181a333d-c6cc-4ea0-8fad-ce693decd275")
 		(effects
 			(font
 				(size 1.1 1.1)
 				(thickness 0.24)
+				(bold yes)
+			)
+			(justify bottom)
+		)
+	)
+	(gr_text "OUT5: 13.8V"
+		(at 199.64 40.14 0)
+		(layer "F.SilkS")
+		(uuid "ec3f770b-454c-4983-9b9e-9fe7e2806e3f")
+		(effects
+			(font
+				(size 1.1 1.1)
+				(thickness 0.24)
+				(bold yes)
+			)
+			(justify bottom)
+		)
+	)
+	(gr_text "-"
+		(at 205.06 41.52 0)
+		(layer "F.SilkS")
+		(uuid "6ba7d0c6-9319-49c9-8ee5-1f3f5e6ccbe5")
+		(effects
+			(font
+				(size 1.1 1.1)
+				(thickness 0.24)
+				(bold yes)
+			)
+			(justify bottom)
+		)
+	)
+	(gr_text "E1  E2  E3  E4  E5"
+		(at 111.45 49.77 0)
+		(layer "F.SilkS")
+		(uuid "9f3a6f0b-7a2c-473a-98ea-3553503299e7")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.24)
+				(bold yes)
+			)
+			(justify bottom)
+		)
+	)
+	(gr_text "DJ5CW / SO5CW\nRemote Power Distribution\n2026-03-29 - V1.1"
+		(at 108.81 137.82 0)
+		(layer "F.SilkS")
+		(uuid "e619d9aa-3fb2-4343-a912-20d01cbbff09")
+		(effects
+			(font
+				(size 1.8 1.8)
+				(thickness 0.3)
 				(bold yes)
 			)
 			(justify bottom)
