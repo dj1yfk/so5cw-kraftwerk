@@ -59,6 +59,11 @@ GPIO.setmode(GPIO.BCM)
 rpins =  [ 7, 19, 12, 16, 20 ]
 rstate = [ 1, 1, 1, 1, 1]
 
+# Input pins (opto coupler)
+opins =  [ 22, 27 ]
+opin_history = [[], []]
+
+
 # Err LEDs E1 E2  E3  E4  E5
 lpins =  [ 17, 18, 15, 4, 14 ]
 lstate = [ 0, 0, 0, 0, 0]
@@ -72,6 +77,10 @@ for i in range(0,5):
     GPIO.output(rpins[i], rstate[i])
     GPIO.output(lpins[i], 0)
 
+# init optocoupler pins
+for i in range(0,2):
+    GPIO.setup(opins[i], GPIO.IN)
+
 stdscr.addstr(0,0,"Activate relay K1..K5 by pressing 1..5.")
 syslog.syslog("Launching so5cw-kraftwerk")
 
@@ -79,9 +88,7 @@ try:
     while 1:
         c = stdscr.getch()
         if c >= ord('1') and c <= ord('5'):
-#            nr = chr(c)
             nr = c - ord('1')
-#            stdscr.addstr(2,0, "nr = {}".format(nr))
             if rstate[nr] == 0:
                 rstate[nr] = 1   # switch relay on
                 lstate[nr] = 0   # reset fuse
@@ -91,7 +98,6 @@ try:
            
             GPIO.output(rpins[nr], rstate[nr])
         else:
-#            stdscr.addstr(2,0, "tout")
             sign_of_life()
 
         with SMBus(1) as bus:
@@ -99,22 +105,32 @@ try:
                 voltage, ovf = read_voltage(ch);
                 current      = read_current(ch);
 
-                if current > limits[ch]:    # Fuse blows?
-                    syslog.syslog("ALERT: Channel {} above limit (limit: {}, measured: {}, voltage: {}) - re-reading current.".format(ch, limits[ch], current, voltage))
+                if current > limits[ch]:    # Over current limit?
+                    syslog.syslog("WARN: Channel {} above current limit (limit: {}, measured: {}, voltage: {}) - re-reading current.".format(ch+1, limits[ch], current, voltage))
                     current      = read_current(ch);
 
-                    if current < limits[ch]:    # false alert
-                        syslog.syslog("OK - 2nd reading: {}".format(current))
+                    if current < limits[ch]:    # I2C reading error - false alert
+                        syslog.syslog("WARN: False alert - 2nd reading: {}".format(current))
                         continue
-                    else:
-                        syslog.syslog("CFM - 2nd reading: {} - Switch OFF".format(current))
+
+                    syslog.syslog("ALERT: Channel {} above current limit (limit: {}, measured: {}, voltage: {}) for two consecutive measurements. Switch OFF..".format(ch+1, limits[ch], current, voltage))
 
                     lstate[ch] = 1
                     rstate[ch] = 0
                     GPIO.output(rpins[ch], rstate[ch])
                     GPIO.output(lpins[ch], lstate[ch])
 
-                stdscr.addstr(3+ch,0, "CH{0}: {1:5.2f} V\t{2:5.2f} A\tOVF = {3}  FUSE = {4}   ".format(ch, voltage, current, ovf, lstate[ch]))
+                stdscr.addstr(3+ch,0, "CH{0}: {1:5.2f} V\t{2:5.2f} A\tOVF = {3}  FUSE = {4}   ".format(ch+1, voltage, current, ovf, lstate[ch]))
+
+            # show GPIO status and history (last 10 readins)
+            for ch in range(0,2):
+                pinstate = abs(GPIO.input(opins[ch]) - 1)
+                stdscr.addstr(3+len(rpins)+ch ,0, "IN{0}: {1} {2} ".format(ch, pinstate, opin_history[ch]))
+                opin_history[ch].insert(0, pinstate) 
+                while len(opin_history[ch]) > 10:
+                    opin_history[ch].pop()
+
+
 
 finally:
     curses.endwin()
